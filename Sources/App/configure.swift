@@ -17,6 +17,10 @@ public func configure(
     middlewares.use(ErrorMiddleware.self)
     services.register(middlewares)
     
+    
+    var migrations = MigrationConfig()
+    migrations.add(model: Acronym.self, database: .psql)
+    services.register(migrations)
    // 1
     var databases = DatabasesConfig()
     // 2
